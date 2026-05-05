@@ -199,7 +199,12 @@ header h1 {
   transition: background 0.2s;
 }
 
-.nav-btn:hover {
+.nav-btn:disabled {
+  background: #9eb4c4;
+  cursor: not-allowed;
+}
+
+.nav-btn:not(:disabled):hover {
   background: #145a8a;
 }
 

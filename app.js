@@ -47,27 +47,30 @@ function renderCard(index) {
   answer.className = "card-answer";
   answer.textContent = item.a;
 
+  const counter = document.createElement("div");
+  counter.className = "question-counter";
+  counter.textContent = `${index + 1}/${filteredList.length}`;
+
+  const nav = document.createElement("div");
+  nav.className = "nav-bar";
+  nav.innerHTML = `<button class="nav-btn" disabled>Naslednje vpra\u0161anje \u2192</button>`;
+  const navBtn = nav.querySelector(".nav-btn");
+
   btn.addEventListener("click", () => {
     const isOpen = card.classList.toggle("open");
     btn.setAttribute("aria-expanded", isOpen);
+    navBtn.disabled = !isOpen;
+  });
+
+  navBtn.addEventListener("click", () => {
+    currentIndex = randNext(currentIndex, filteredList.length);
+    renderCard(currentIndex);
   });
 
   card.appendChild(btn);
   card.appendChild(answer);
   container.appendChild(card);
-
-  const counter = document.createElement("div");
-  counter.className = "question-counter";
-  counter.textContent = `${index + 1}/${filteredList.length}`;
   container.appendChild(counter);
-
-  const nav = document.createElement("div");
-  nav.className = "nav-bar";
-  nav.innerHTML = `<button class="nav-btn">Naslednje vpra\u0161anje \u2192</button>`;
-  nav.querySelector(".nav-btn").addEventListener("click", () => {
-    currentIndex = randNext(currentIndex, filteredList.length);
-    renderCard(currentIndex);
-  });
   container.appendChild(nav);
 }
 
