@@ -19,16 +19,12 @@ function getFiltered() {
 
 function renderCard(index) {
   const container = document.getElementById("question-list");
-  const statsEl = document.getElementById("stats");
   container.innerHTML = "";
 
   if (filteredList.length === 0) {
-    statsEl.textContent = "";
     container.innerHTML = "<p style='text-align:center;color:#789'>Ni vpra\u0161anj v tej kategoriji.</p>";
     return;
   }
-
-  statsEl.textContent = `Vpra\u0161anje ${index + 1} od ${filteredList.length}`;
 
   const item = filteredList[index];
   const catName = categoryNames[item.cat] || "";
@@ -59,6 +55,11 @@ function renderCard(index) {
   card.appendChild(btn);
   card.appendChild(answer);
   container.appendChild(card);
+
+  const counter = document.createElement("div");
+  counter.className = "question-counter";
+  counter.textContent = `${index + 1}/${filteredList.length}`;
+  container.appendChild(counter);
 
   const nav = document.createElement("div");
   nav.className = "nav-bar";

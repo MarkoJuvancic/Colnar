@@ -14,7 +14,7 @@ body {
 .page {
   max-width: 860px;
   margin: 0 auto;
-  padding: 2rem 1rem 4rem;
+  padding: 2rem 1rem 9rem;
 }
 
 header {
@@ -36,11 +36,19 @@ header h1 {
 
 /* Categories */
 .categories {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   justify-content: center;
-  margin-bottom: 1.5rem;
+  padding: 0.8rem 1rem calc(0.8rem + env(safe-area-inset-bottom));
+  background: #fff;
+  border-top: 1px solid #e3eef7;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.06);
 }
 
 .cat-btn {
@@ -68,10 +76,6 @@ header h1 {
   color: #fff;
 }
 
-.cat-icon {
-  font-size: 1.1rem;
-}
-
 /* Stats */
 .stats {
   text-align: center;
@@ -85,6 +89,13 @@ header h1 {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+.question-counter {
+  text-align: right;
+  font-size: 0.95rem;
+  color: #567;
+  margin-top: 0.2rem;
 }
 
 /* Card */
@@ -148,11 +159,33 @@ header h1 {
   display: block;
 }
 
+.toggle-icon {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border-right: 2.5px solid #5ba3d9;
+  border-bottom: 2.5px solid #5ba3d9;
+  transform: rotate(45deg);
+  transition: transform 0.25s;
+  margin-top: 1px;
+}
+
+.card.open .toggle-icon {
+  transform: rotate(-135deg);
+}
+
 /* Next button */
 .nav-bar {
   display: flex;
   justify-content: center;
-  margin-top: 1.2rem;
+  align-items: center;
+  margin-top: 0.2rem;
+}
+
+.nav-stats {
+  font-size: 0.9rem;
+  color: #567;
 }
 
 .nav-btn {
@@ -179,5 +212,8 @@ header h1 {
     font-size: 0.82rem;
     padding: 0.4rem 0.8rem;
   }
+
+  .page {
+    padding-bottom: 10rem;
+  }
 }
-.toggle-icon{display:inline-block;flex-shrink:0;width:16px;height:16px;border-right:2.5px solid #5ba3d9;border-bottom:2.5px solid #5ba3d9;transform:rotate(45deg);transition:transform 0.25s;margin-top:1px;}.card.open .toggle-icon{transform:rotate(-135deg);}
